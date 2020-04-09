@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class AdminHeader extends Component
+class MainHeader extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class AdminHeader extends Component
      */
     public function render()
     {
-        return view('components.admin-header');
+        return view('components.main-header');
     }
 }

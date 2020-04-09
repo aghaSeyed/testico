@@ -47,10 +47,11 @@ return [
             'hash' => false,
         ],
 
-        'Teacher' => [
+        'teacher' => [
             'driver' => 'session',
             'provider' => 'teachers',
         ],
+
 
     ],
 

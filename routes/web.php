@@ -17,11 +17,11 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 });
 
-Route::namespace('Teacher')->group(function () {
-
+Route::namespace('Teacher')->prefix('student')->name('student.')->group(function () {
+    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 });
 
-Route::namespace('Students')->group(function () {
-
+Route::namespace('Student')->prefix('teacher')->name('teacher.')->group(function () {
+    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 });
 Auth::routes();

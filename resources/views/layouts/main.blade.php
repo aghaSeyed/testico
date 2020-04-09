@@ -35,13 +35,15 @@
     <script type="text/javascript" src="/admin/js/core/app.js"></script>
     <script type="text/javascript" src="/admin/js/pages/dashboard.js"></script>
     <!-- /theme JS files -->
+    @section('scripts')
+        @show
 
 </head>
 
 <body>
 
 <!-- Main navbar -->
-<x-admin-header/>
+<x-main-header/>
 <!-- /main navbar -->
 
 
@@ -52,8 +54,14 @@
     <div class="page-content">
 
         <!-- Main sidebar -->
-        <x-admin-sidebar/>
-        <!-- /main sidebar -->
+        @if(\Illuminate\Support\Facades\Auth::guard('web')->check())
+            <x-teacher-sidebar/>
+        @elseif(\Illuminate\Support\Facades\Auth::guard('teachers')->check())
+            <x-student-sidebar/>
+            @else
+            <x-admin-sidebar/>
+    @endif
+    <!-- /main sidebar -->
 
 
         <!-- Main content -->
