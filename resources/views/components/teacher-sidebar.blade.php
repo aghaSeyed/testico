@@ -10,7 +10,7 @@
                     <div class="media-body">
                         <span class="media-heading text-semibold">Teacher</span>
                         <div class="text-size-mini text-muted">
-                            <i class="icon-pin text-size-small"></i> &nbsp;Santa Ana, CA
+                            <i class="icon-pin text-size-small"></i> &nbsp;Isfahan , IR
                         </div>
                     </div>
 
@@ -35,11 +35,14 @@
                     <!-- Main -->
                     <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i>
                     </li>
-                    <li class="active"><a href="index.html"><i class="icon-home4"></i>
+                    <li class="active"><a href="{{route('teacher.dashboard')}}"><i class="icon-home4"></i>
                             <span>Dashboard</span></a></li>
                     <li>
                         <a href="#"><i class="icon-stack"></i> <span>کلاس های من</span></a>
-
+                        <ul>
+                            <li><a href="{{route('class.index')}}" id="">کلاس های موجود</a></li>
+                            <li><a href="{{route('class.create')}}" id="">ایجاد کلاس جدید</a></li>
+                        </ul>
                     </li>
                     <li>
                         <a href="#"><i class="icon-pencil3"></i> <span>مدیریت آزمون ها</span></a>

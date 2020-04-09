@@ -18,11 +18,11 @@ class CreateQuestionsTable extends Migration
             $table->string('content');
             $table->integer('type');
             $table->string('slug');
-            $table->string('o1');
-            $table->string('o2');
-            $table->string('o3');
-            $table->string('o4');
-            $table->string('answer');
+            $table->string('o1')->nullable();
+            $table->string('o2')->nullable();
+            $table->string('o3')->nullable();
+            $table->string('o4')->nullable();
+            $table->string('answer')->nullable();
             $table->timestamps();
         });
     }

@@ -23,9 +23,10 @@ Route::namespace('Teachers')->prefix('teacher')->group(function () {
     Route::get('logout', 'LoginController@logout')->name('teacher.logout');
     Route::get('register', 'LoginController@register')->name('teacher.register');
 
-    Route::group(['middleware'=>'teachers'], function (){
+    Route::group(['middleware'=>'TeacherAuth'], function (){
         Route::get('dashboard', 'DashboardController@index')->name('teacher.dashboard');
-
+        Route::get('class/store' , 'ClassController@store')->name('teacher.class.store');
+        Route::resource('class' , 'ClassController');
     });
 });
 

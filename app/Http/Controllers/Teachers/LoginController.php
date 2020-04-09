@@ -54,10 +54,15 @@ class LoginController extends Controller
             return $this->sendLockoutResponse($request);
         }
 
+        if (auth()->guard('Teacher')->check()) {
+            $teacher = auth('Teacher')->user();
+            return view('admin.dashboard.index',['name'=>$teacher->fName]);
+
+        }
+
         $details = $request->only('email', 'password');
         if (auth()->guard('Teacher')->attempt($details)) {
-//            return $this->sendLoginResponse($request);
-            $teacher = auth('teacher')->user();
+            $teacher = auth('Teacher')->user();
             return view('admin.dashboard.index',['name'=>$teacher->fName]);
         }
 

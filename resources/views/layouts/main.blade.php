@@ -54,9 +54,9 @@
     <div class="page-content">
 
         <!-- Main sidebar -->
-        @if(\Illuminate\Support\Facades\Auth::guard('web')->check())
+        @if(\Illuminate\Support\Facades\Auth::guard('Teacher')->check())
             <x-teacher-sidebar/>
-        @elseif(\Illuminate\Support\Facades\Auth::guard('Teacher')->check())
+        @elseif(\Illuminate\Support\Facades\Auth::guard()->check())
             <x-student-sidebar/>
             @else
             <x-admin-sidebar/>

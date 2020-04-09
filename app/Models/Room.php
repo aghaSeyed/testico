@@ -4,10 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Room
+ * @package App\Models
+ * @property string $name
+ * @property string $description
+ */
 class Room extends Model
 {
     protected $fillable = [
-        'teacher_id', 'name', 'description' ,'status'
+        'teacher_id', 'name', 'description' ,'status' , 'field'
     ];
 
     /**
@@ -15,7 +21,7 @@ class Room extends Model
      */
     public function students()
     {
-        return $this->belongsToMany(Student::class);
+        return $this->belongsToMany(Student::class , 'student_room' , 'room_id' , 'student_id');
     }
 
     /**

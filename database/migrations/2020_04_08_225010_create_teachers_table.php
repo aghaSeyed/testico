@@ -17,7 +17,7 @@ class CreateTeachersTable extends Migration
             $table->increments('id');
             $table->string('fName');
             $table->string('lName');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('password');
             $table->string('field');
             $table->softDeletes();

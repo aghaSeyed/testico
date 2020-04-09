@@ -4,6 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Exam
+ * @package App\Models
+ * @property string $name
+ * @property string $description
+ * @property string $questions
+ */
 class Exam extends Model
 {
     protected $fillable = [

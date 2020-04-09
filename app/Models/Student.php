@@ -7,6 +7,15 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * Class Student
+ * @package App\Models
+ * @property string $fName
+ * @property string $lName
+ * @property string $nCode
+ * @property string $email
+ * @property string $password
+ */
 class Student extends Authenticatable
 {
     use Notifiable , SoftDeletes;
@@ -32,7 +41,7 @@ class Student extends Authenticatable
      */
     public function rooms()
     {
-        return $this->belongsToMany(Room::class);
+        return $this->belongsToMany(Room::class , 'student_room' , 'student_id' , 'room_id');
     }
 
     /**

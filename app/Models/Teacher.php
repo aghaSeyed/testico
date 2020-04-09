@@ -7,7 +7,15 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-
+/**
+ * Class Teacher
+ * @package App\Models
+ * @property string $fName
+ * @property string $lName
+ * @property string $field
+ * @property string $email
+ * @property string $password
+ */
 class Teacher extends Authenticatable
 {
 

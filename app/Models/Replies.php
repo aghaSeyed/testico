@@ -4,6 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Replies
+ * @package App\Models
+ * @property string $content
+ * @property string $point
+ */
 class Replies extends Model
 {
     /**
