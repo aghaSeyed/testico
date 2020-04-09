@@ -18,6 +18,7 @@ class CreateRoomsTable extends Migration
             $table->integer('status');
             $table->string('description');
             $table->string('name');
+            $table->string('field');
             $table->integer('teacher_id')->unsigned()->index();
             $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('cascade');;
             $table->timestamps();
