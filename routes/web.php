@@ -17,10 +17,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::namespace('Admin')->group(function () {
+//admin kol ke yeki az teacher hast akhare kar kamel mishe
+});
+
+
+Route::namespace('Teacher')->group(function () {
+
+});
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::namespace('Students')->group(function () {
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+});
