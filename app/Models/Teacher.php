@@ -5,17 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 class Teacher extends Authenticatable
 {
 
-    use Notifiable;
+    use Notifiable,SoftDeletes;
     /**
      * @var array
      */
     protected $fillable = [
-        'fName', 'lName', 'nCode','email','password'
+        'fName', 'lName', 'field','email','password'
     ];
 
     protected $hidden = [
@@ -25,6 +26,9 @@ class Teacher extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected $dates = ['deleted_at'];
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

@@ -15,6 +15,11 @@ class CreateRoomsTable extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
+            $table->integer('status');
+            $table->string('description');
+            $table->string('name');
+            $table->integer('teacher_id')->unsigned()->index();
+            $table->foreign('teacher_id')->references('id')->on('teachers');
             $table->timestamps();
         });
     }
