@@ -14,11 +14,11 @@ class CreateStudentRoomTable extends Migration
     public function up()
     {
         Schema::create('student_room', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->integer('student_id')->unsigned()->index();
-            $table->foreign('student_id')->references('id')->on('students');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');;
             $table->integer('room_id')->unsigned()->index();
-            $table->foreign('room_id')->references('id')->on('rooms');
+            $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');;
             $table->timestamps();
         });
     }

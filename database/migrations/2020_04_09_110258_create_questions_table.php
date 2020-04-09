@@ -14,7 +14,7 @@ class CreateQuestionsTable extends Migration
     public function up()
     {
         Schema::create('questions', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('content');
             $table->integer('type');
             $table->string('slug');
@@ -23,7 +23,6 @@ class CreateQuestionsTable extends Migration
             $table->string('o3');
             $table->string('o4');
             $table->string('answer');
-
             $table->timestamps();
         });
     }

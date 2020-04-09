@@ -14,13 +14,13 @@ class CreateRepliesTable extends Migration
     public function up()
     {
         Schema::create('replies', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->longText('content');
             $table->string('point');
             $table->integer('exam_id')->unsigned()->index();
-            $table->foreign('exam_id')->references('id')->on('exams');
+            $table->foreign('exam_id')->references('id')->on('exams')->onDelete('cascade');;
             $table->integer('student_id')->unsigned()->index();
-            $table->foreign('student_id')->references('id')->on('students');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');;
             $table->timestamps();
         });
     }
