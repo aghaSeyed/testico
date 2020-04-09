@@ -11,9 +11,17 @@ class AdminHeader extends Component
      *
      * @return void
      */
-    public function __construct()
+
+
+    /**
+     * @var string
+     */
+    public $name;
+
+
+    public function __construct($name)
     {
-        //
+        $this->name=$name;
     }
 
     /**

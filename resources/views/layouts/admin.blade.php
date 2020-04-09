@@ -41,7 +41,7 @@
 <body>
 
 <!-- Main navbar -->
-<x-admin-header/>
+<x-admin-header :name="$name" />
 <!-- /main navbar -->
 
 

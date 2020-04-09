@@ -14,11 +14,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
-    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 });
 
-Route::namespace('Teacher')->group(function () {
 
+Route::namespace('Teachers')->prefix('teacher')->group(function () {
+    Route::get('login', 'LoginController@showLoginForm')->name('teacher.login');
+    Route::post('login', 'LoginController@login')->name('teacher.login');
+    Route::get('logout', 'LoginController@logout')->name('teacher.logout');
+    Route::get('register', 'LoginController@register')->name('teacher.register');
+
+    Route::group(['middleware'=>'teachers'], function (){
+        Route::get('dashboard', 'DashboardController@index')->name('teacher.dashboard');
+
+    });
 });
 
 Route::namespace('Students')->group(function () {

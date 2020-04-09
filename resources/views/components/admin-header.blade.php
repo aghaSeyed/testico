@@ -45,7 +45,7 @@
             <li class="dropdown dropdown-user">
                 <a class="dropdown-toggle" data-toggle="dropdown">
                     <img src="assets/images/placeholder.jpg" alt="">
-                    <span>Victoria</span>
+                    <span>{{$name}}</span>
                     <i class="caret"></i>
                 </a>
 
@@ -53,7 +53,7 @@
                     <li><a href="#"><i class="icon-user-plus"></i> My profile</a></li>
                     <li class="divider"></li>
                     <li><a href="#"><i class="icon-cog5"></i> Account settings</a></li>
-                    <li><a href="#"><i class="icon-switch2"></i> Logout</a></li>
+                    <li><a href="{{route('teacher.logout')}}"><i class="icon-switch2"></i> Logout</a></li>
                 </ul>
             </li>
         </ul>
