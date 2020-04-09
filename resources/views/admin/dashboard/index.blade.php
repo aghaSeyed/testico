@@ -1,5 +1,4 @@
-@extends('layouts.admin')
-
+@extends('layouts.main')
 @section('content')
     <div class="content-wrapper">
 
@@ -180,4 +179,8 @@
         <!-- /content area -->
 
     </div>
+@endsection
+@section('scripts')
+    @parent
+
 @endsection

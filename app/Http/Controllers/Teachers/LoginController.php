@@ -57,7 +57,7 @@ class LoginController extends Controller
         $details = $request->only('email', 'password');
         if (auth()->guard('Teacher')->attempt($details)) {
 //            return $this->sendLoginResponse($request);
-            $teacher = auth('Teacher')->user();
+            $teacher = auth('teacher')->user();
             return view('admin.dashboard.index',['name'=>$teacher->fName]);
         }
 
