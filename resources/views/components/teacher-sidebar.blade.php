@@ -48,9 +48,9 @@
                         <a href="#"><i class="icon-pencil3"></i> <span>مدیریت آزمون ها</span></a>
                         <ul>
                             <li><a href="" id="layout3">تاریخچه آزمون ها</a></li>
-                            <li><a href="" id="layout1">ایجادآزمون</a></li>
+                            <li><a href="{{route('exam.create')}}" >ایجادآزمون</a></li>
                             <li><a href="" id="layout2">ویرایش آزمون</a></li>
-                            <li><a href="" id="layout3">ایجاد سوال</a></li>
+                            <li><a href="{{route('question.create')}}" >ایجاد سوال</a></li>
                             <li><a href="" id="layout3">ویرایش سوال</a></li>
                         </ul>
                     </li>

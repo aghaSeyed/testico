@@ -27,6 +27,8 @@ Route::namespace('Teachers')->prefix('teacher')->group(function () {
         Route::get('dashboard', 'DashboardController@index')->name('teacher.dashboard');
         Route::get('class/store' , 'ClassController@store')->name('teacher.class.store');
         Route::resource('class' , 'ClassController');
+        Route::resource('exam' , 'ExamController');
+        Route::resource('question' , 'QuestionController');
     });
 });
 

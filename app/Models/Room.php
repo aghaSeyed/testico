@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Model;
  * @package App\Models
  * @property string $name
  * @property string $description
+ * @property string $field
+ * @property strin $status
  */
 class Room extends Model
 {

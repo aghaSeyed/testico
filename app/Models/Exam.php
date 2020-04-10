@@ -10,11 +10,14 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $name
  * @property string $description
  * @property string $questions
+ * @property string $type
+ * type==0 testi
+ * type==1 tashrihi
  */
 class Exam extends Model
 {
     protected $fillable = [
-        'room_id' ,'teacher_id' ,'name', 'description','questions'
+        'room_id' ,'teacher_id' ,'name', 'description','questions' , 'type', ' start' , 'end' , 'time'
     ];
 
     /**
