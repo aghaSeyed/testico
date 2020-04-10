@@ -21,7 +21,7 @@ class Question extends Model
      * @var array
      */
     protected $fillable=[
-        'content' , 'type' ,'o1' , 'o2' , 'o2' , 'o3','o4' , 'answer' , 'slug'
+        'content' , 'type' ,'o1' , 'o2' , 'o2' , 'o3','o4' , 'answer' , 'slug' , 'image'
     ];
 
 

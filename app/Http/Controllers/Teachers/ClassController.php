@@ -42,6 +42,7 @@ class ClassController extends Controller
      */
     public function store(CreateClassRequest $request)
     {
+
         $teacher =auth('Teacher')->user();
         $room = new Room();
         $room->name = $request->name;

@@ -7,8 +7,9 @@
 {{--    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>--}}
 {{--    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>--}}
 {{--    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>--}}
-{{--    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />--}}
-
+{{--    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />--}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 @endsection
 
 @section('content')
@@ -72,7 +73,7 @@
 
                                     <div class="form-group">
                                         <label class="display-block">زمان آزمون:</label>
-                                        <input type="text" class="form-control" style="width: 60%" name="time" placeholder="45" required>
+                                        <input type="text" class="form-control" style="width: 60%" name="time" placeholder="45" >
                                         <span class="help-block">زمان را به دقیقه وارد کنید</span>
                                     </div>
 
@@ -94,13 +95,13 @@
                                         <label>زمان شزوع آزمون </label>
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="icon-calendar22"></i></span>
-                                            <input type="text" name="start_d"  class="form-control " placeholder="روز" required>
+                                            <input type="text" name="start_d"  class="form-control " placeholder="روز" >
 
                                             <span class="input-group-addon"><i class="icon-calendar22"></i></span>
-                                            <input type="text" name="start_m"  class="form-control " placeholder="ماه" required>
+                                            <input type="text" name="start_m"  class="form-control " placeholder="ماه" >
 
                                             <span class="input-group-addon"><i class="icon-calendar22"></i></span>
-                                            <input type="text" name="start_y"  class="form-control " placeholder="سال" required>
+                                            <input type="text" name="start_y"  class="form-control " placeholder="سال" >
 
                                         </div>
                                         <span class="help-block">فیلد ها به عدد پر شوند</span>
@@ -112,17 +113,45 @@
                                         <label>زمان پایان آزمون </label>
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="icon-calendar22"></i></span>
-                                            <input type="text" name="end_d"  class="form-control " placeholder="روز" required>
+                                            <input type="text" name="end_d"  class="form-control " placeholder="روز" >
 
                                             <span class="input-group-addon"><i class="icon-calendar22"></i></span>
-                                            <input type="text" name="end_m"  class="form-control " placeholder="ماه" required>
+                                            <input type="text" name="end_m"  class="form-control " placeholder="ماه" >
 
                                             <span class="input-group-addon"><i class="icon-calendar22"></i></span>
-                                            <input type="text" name="end_y"  class="form-control " placeholder="سال" required>
+                                            <input type="text" name="end_y"  class="form-control " placeholder="سال" >
 
                                         </div>
                                         <span class="help-block">فیلد ها به عدد پر شوند</span>
+                                        <div class="form-group">
+                                            <table id="example" class="table" style="width:100%">
+                                                <thead>
+                                                <tr>
+                                                    <th>وضعیت</th>
+                                                    <th>خلاصه سوال</th>
+                                                    <th>تصویر</th>
+                                                    <th>تغییرات</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody >
+                                                @foreach($questions as $question)
+                                                    <tr>
+                                                        <td><label id="s{{$question->id}}"></label></td>
+                                                        <td>{{$question->slug}}</td>
+                                                        <td>{{$question->image}}</td>
+                                                        <td>
+                                                            <button type="button" onclick="f({{$question->id}})" style="width: 100px" class="btn btn-success"> add </button>
+                                                            <button type="button" onclick="r({{$question->id}})" style="width: 100px" class="btn btn-danger"> remove </button>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </table>
 
+                                            <div class="form-group">
+                                            <input type="hidden" name="questions" id="qu">
+                                            </div>
+
+                                        </div>
                                     </div>
                                 </div>
                             </fieldset>
@@ -141,4 +170,34 @@
 @section('scripts-bottom')
     @parent
 
+    <script>
+    $('#example').DataTable();
+
+    var q = [];
+    function f(a) {
+        let flag = 0;
+        for (let i = 0; i < q.length; i++) {
+            if(q[i]==a){
+                flag=1;
+            }
+        }
+        if(flag ==0)
+        q.push(a);
+        $('#q').val(q);
+        var id ="#s";
+        id= id.concat(a);
+        $( id).html("اتخاب شد");
+        $("#qu").val(q);
+    }
+
+    function r(item) {
+        var index = q.indexOf(item);
+        if (index !== -1) q.splice(index, 1);
+        var id ="#s";
+        id= id.concat(item);
+        $( id).html(" ");
+        $("#qu").val(q);
+    }
+
+    </script>
     @endsection
