@@ -12,7 +12,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-flat">
                     <div class="panel-heading">
-                        <h5 class="panel-title">لیست سوالات</h5>
+                        <h5 class="panel-title">نتایج آزمون</h5>
                         <div class="heading-elements">
                             <ul class="icons-list">
                                 <li><a data-action="collapse"></a></li>
@@ -24,7 +24,7 @@
                         <fieldset>
                             <legend class="text-semibold">
                                 <i class="icon-file-text2 position-left"></i>
-
+                                نمرات
                                 <a class="control-arrow" data-toggle="collapse" data-target="#demo1">
                                     <i class="icon-circle-down2"></i>
                                 </a>
@@ -34,40 +34,19 @@
                                 <table id="example" class="table" style="width:100%">
                                     <thead>
                                     <tr>
-                                        <th>خلاصه سوال</th>
-                                        <th>تصویر</th>
-                                        <th>نوع سوال</th>
-                                        <th>گزینه ها</th>
-                                        <th> </th>
+                                        <th>نام</th>
+                                        <th>نام خانوادگی</th>
+                                        <th>کدملی</th>
+                                        <th>نمره</th>
                                     </tr>
                                     </thead>
                                     <tbody >
-                                    @foreach($questions as $question)
+                                    @foreach($replies as $reply)
                                         <tr>
-                                            <td>{{$question->slug}}</td>
-                                            <td>{{$question->image}}</td>
-                                            <td>
-                                                @if($question->type == 0)
-                                                    <p>تست</p>
-                                                    @else
-                                                    <p>تشریحی</p>
-                                                @endif
-                                            </td>
-                                            <td>
-                                                <form method="get" action="{{route('question.edit' , ['question' =>$question->id])}}">
-                                                    @csrf
-                                                    <button class="btn btn-dark" type="submit">edit</button>
-                                                </form>
-                                            </td>
-                                            <td>
-                                                <form method="post" action="{{route('question.destroy' , ['question' =>$question->id])}}">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button class="btn btn-dark" type="submit">remove</button>
-                                                </form>
-                                            </td>
-
-
+                                            <td>{{$reply->student()->first()->fName}}</td>
+                                            <td>{{$reply->student()->first()->lName}}</td>
+                                            <td>{{$reply->student()->first()->nCode}}</td>
+                                            <td>{{$reply->point}}</td>
                                         </tr>
                                     @endforeach
                                 </table>
@@ -78,12 +57,12 @@
                     </div>
 
 
-                </div>
             </div>
-
         </div>
+
     </div>
-@endsection
+    </div>
+    @endsection
 
 @section('scripts-bottom')
     @parent

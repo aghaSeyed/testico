@@ -11,12 +11,13 @@ class QuestionController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
         $teacher = auth('Teacher')->user();
-        return  view('teacher.question.index' , ['name' => $teacher->fName]);
+        $questions = $teacher->questions()->get();
+        return  view('teacher.question.index' , ['name' => $teacher->fName , 'questions' => $questions]);
     }
 
     /**
@@ -43,8 +44,10 @@ class QuestionController extends Controller
                 'slug'=>'required',
                 'type'=>'required',
         ]);
+        $teacher = auth('Teacher')->user();
         $q = new Question();
         $q->content = $request->contents;
+        $q->teacher_id = $teacher->id;
         $q->slug = $request->slug;
         $q->type = $request->type;
         if($request->type == 0){
@@ -75,11 +78,14 @@ class QuestionController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
-        //
+        $question = Question::all()->find($id);
+        $teacher = auth('Teacher')->user();
+        return  view('teacher.question.edit' , ['name' => $teacher->fName , 'question' => $question]);
+
     }
 
     /**
@@ -87,11 +93,25 @@ class QuestionController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
     {
-        //
+        $question =Question::all()->find(id);
+        $question->slug = $request->slug;
+        $question->content = $request->contents;
+        if(isset($request->o1)) {
+            $question->o1 = $request->o1;
+            $question->o2 = $request->o2;
+            $question->o3 = $request->o3;
+            $question->o4 = $request->o4;
+            $question->answer = $request->answer;
+        }
+        $question->save();
+        $teacher = auth('Teacher')->user();
+        $questions = $teacher->questions()->get();
+        return  redirect()->route('teacher.question.index' , ['name' => $teacher->fName , 'questions' => $questions]);
+
     }
 
     /**

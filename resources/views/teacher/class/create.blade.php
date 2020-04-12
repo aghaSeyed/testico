@@ -15,7 +15,7 @@
     </div>
     <div class="row" style="padding-top: 20px">
         <div class="col-md-8 col-md-offset-2">
-            <form action="{{route('teacher.class.store')}}" method="GET">
+            <form action="{{route('teacher.class.store')}}" method="post">
                 @csrf
                 <div class="panel panel-flat">
                     <div class="panel-heading">

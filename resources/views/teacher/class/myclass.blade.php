@@ -19,7 +19,7 @@
                         <h6 class="text-semibold no-margin">{{$room->name}}</h6>
                         <p class="text-muted mb-15 mt-5">{{$room->description}}</p>
 
-                        <a href="#" class="btn bg-teal"><i class="icon-paperplane position-left"></i> اعضای کلاس</a>
+                        <a href="{{route('class.show' , $room->id)}}" class="btn bg-teal"><i class="icon-paperplane position-left"></i> اعضای کلاس</a>
                     </div>
                 </div>
             </div>

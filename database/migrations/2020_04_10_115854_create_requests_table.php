@@ -14,7 +14,12 @@ class CreateRequestsTable extends Migration
     public function up()
     {
         Schema::create('requests', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->integer('status')->default(0);
+            $table->integer('room_id')->unsigned()->index();
+            $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
+            $table->integer('student_id')->unsigned()->index();
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->timestamps();
         });
     }

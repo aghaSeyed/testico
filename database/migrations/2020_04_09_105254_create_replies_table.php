@@ -19,9 +19,9 @@ class CreateRepliesTable extends Migration
             $table->string('point');
             $table->integer('attemp')->default(0);
             $table->integer('exam_id')->unsigned()->index();
-            $table->foreign('exam_id')->references('id')->on('exams')->onDelete('cascade');;
+            $table->foreign('exam_id')->references('id')->on('exams')->onDelete('cascade');
             $table->integer('student_id')->unsigned()->index();
-            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');;
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->timestamps();
         });
     }

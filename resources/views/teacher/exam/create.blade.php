@@ -2,14 +2,14 @@
 
 @section('scripts')
     @parent
-{{--    <script type="text/javascript" src="{{url('admin/js/plugins/pickers/pickadate/picker.date.js')}}"></script>--}}
-
-{{--    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>--}}
-{{--    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>--}}
-{{--    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>--}}
-{{--    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />--}}
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="{{url('css/bootstrap-clockpicker.min.css')}}">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/persian-datepicker@1.2.0/dist/css/persian-datepicker.min.css"/>
+{{--    <script src="js/jquery.js"></script>--}}
+    <script src="https://unpkg.com/persian-date@1.1.0/dist/persian-date.min.js"></script>
+    <script src="https://unpkg.com/persian-datepicker@1.2.0/dist/js/persian-datepicker.min.js"></script>
+    <script src="{{url('js/bootstrap-clockpicker.min.js')}}"></script>
 @endsection
 
 @section('content')
@@ -72,7 +72,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="display-block">زمان آزمون:</label>
+                                        <label class="display-block">مدت زمان آزمون:</label>
                                         <input type="text" class="form-control" style="width: 60%" name="time" placeholder="45" >
                                         <span class="help-block">زمان را به دقیقه وارد کنید</span>
                                     </div>
@@ -92,44 +92,39 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label>زمان شزوع آزمون </label>
+                                        <label>تاریخ و زمان شروع آزمون</label>
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="icon-calendar22"></i></span>
-                                            <input type="text" name="start_d"  class="form-control " placeholder="روز" >
-
-                                            <span class="input-group-addon"><i class="icon-calendar22"></i></span>
-                                            <input type="text" name="start_m"  class="form-control " placeholder="ماه" >
-
-                                            <span class="input-group-addon"><i class="icon-calendar22"></i></span>
-                                            <input type="text" name="start_y"  class="form-control " placeholder="سال" >
+                                            <input type="text" class="form-control" id="example1" name="start" />
+                                            <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-time"></span>
+                                            </span>
+                                            <input type="text" class="form-control" name="sdate" id="sdate">
 
                                         </div>
-                                        <span class="help-block">فیلد ها به عدد پر شوند</span>
-                                        <span class="help-block">مثال قابل قبول : 02 05 1399</span>
 
                                     </div>
 
                                     <div class="form-group">
-                                        <label>زمان پایان آزمون </label>
+                                        <label>تاریخ و زمان پایان آزمون </label>
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="icon-calendar22"></i></span>
-                                            <input type="text" name="end_d"  class="form-control " placeholder="روز" >
-
-                                            <span class="input-group-addon"><i class="icon-calendar22"></i></span>
-                                            <input type="text" name="end_m"  class="form-control " placeholder="ماه" >
-
-                                            <span class="input-group-addon"><i class="icon-calendar22"></i></span>
-                                            <input type="text" name="end_y"  class="form-control " placeholder="سال" >
+                                            <input type="text" class="form-control" id="example2" name="end" />
+                                            <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-time"></span>
+                                            </span>
+                                            <input type="text" class="form-control" name="edate" id="edate">
 
                                         </div>
-                                        <span class="help-block">فیلد ها به عدد پر شوند</span>
+                                        <span class="help-block">توجه شود زمان شروع و پایان یکسان نباشند.</span>
+
                                         <div class="form-group">
                                             <table id="example" class="table" style="width:100%">
                                                 <thead>
                                                 <tr>
                                                     <th>وضعیت</th>
                                                     <th>خلاصه سوال</th>
-                                                    <th>تصویر</th>
+                                                    <th>نوع سوال</th>
                                                     <th>تغییرات</th>
                                                 </tr>
                                                 </thead>
@@ -138,7 +133,13 @@
                                                     <tr>
                                                         <td><label id="s{{$question->id}}"></label></td>
                                                         <td>{{$question->slug}}</td>
-                                                        <td>{{$question->image}}</td>
+                                                        <td>
+                                                            @if($question->type == 0)
+                                                                <p>تست</p>
+                                                            @else
+                                                                <p>تشریحی</p>
+                                                            @endif
+                                                        </td>
                                                         <td>
                                                             <button type="button" onclick="f({{$question->id}})" style="width: 100px" class="btn btn-success"> add </button>
                                                             <button type="button" onclick="r({{$question->id}})" style="width: 100px" class="btn btn-danger"> remove </button>
@@ -172,7 +173,22 @@
 
     <script>
     $('#example').DataTable();
-
+    $("#example1").pDatepicker({
+        format : "L",
+    });
+    $("#example2").pDatepicker({
+        format : "L",
+    });
+    $('#sdate').clockpicker({
+        donetext: 'تایید',
+        autoclose: true,
+        'default': 'now'
+    });
+    $('#edate').clockpicker({
+        donetext: 'تایید',
+        autoclose: true,
+        'default': 'now'
+    });
     var q = [];
     function f(a) {
         let flag = 0;

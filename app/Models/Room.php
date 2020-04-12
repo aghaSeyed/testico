@@ -40,4 +40,12 @@ class Room extends Model
     public function exams(){
         return $this->hasMany(Exam::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function requests()
+    {
+        return $this->hasMany(Request::class);
+    }
 }

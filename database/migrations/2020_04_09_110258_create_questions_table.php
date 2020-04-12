@@ -24,6 +24,8 @@ class CreateQuestionsTable extends Migration
             $table->string('o4')->nullable();
             $table->string('answer')->nullable();
             $table->string('image')->nullable();
+            $table->integer('teacher_id')->unsigned()->index();
+            $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('cascade');
             $table->timestamps();
         });
     }
