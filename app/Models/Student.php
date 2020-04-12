@@ -23,7 +23,7 @@ class Student extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'fName', 'lName', 'nCode','email' , 'password'
+        'fName', 'lName', 'nCode','email' , 'password' , 'avg'
     ];
 
     protected $hidden = [
@@ -51,6 +51,15 @@ class Student extends Authenticatable
     {
         return $this->hasMany(Replies::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function requests()
+    {
+        return $this->hasMany(Request::class);
+    }
+
 
 
 }

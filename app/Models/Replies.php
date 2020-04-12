@@ -16,7 +16,7 @@ class Replies extends Model
      * @var array
      */
     protected $fillable = [
-        'exam_id' , 'student_id' ,'content' , 'point'
+        'exam_id' , 'student_id' ,'content' , 'point' , 'attemp',
     ];
 
     /**

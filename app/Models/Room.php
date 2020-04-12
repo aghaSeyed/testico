@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Model;
  * @package App\Models
  * @property string $name
  * @property string $description
+ * @property string $field
+ * @property strin $status
  */
 class Room extends Model
 {
@@ -37,5 +39,13 @@ class Room extends Model
      */
     public function exams(){
         return $this->hasMany(Exam::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function requests()
+    {
+        return $this->hasMany(Request::class);
     }
 }

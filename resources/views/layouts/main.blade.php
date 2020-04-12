@@ -73,6 +73,7 @@
 
 </div>
 <!-- /page container -->
-
+@section('scripts-bottom')
+@show
 </body>
 </html>
