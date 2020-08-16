@@ -6,7 +6,7 @@
             <div class="col-md-3">
                 <div class="thumbnail">
                     <div class="thumb">
-                        <img src="{{url('admin/images/placeholder.jpg')}}" alt="">
+                        <img src="{{url('images/Class-Room.jpg')}}" alt="">
                         <div class="caption-overflow">
 										<span>
 											<a href="#" class="btn bg-success-400 btn-icon"><i class="icon-pencil"></i></a>

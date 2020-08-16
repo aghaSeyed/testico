@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
-});
+//Route::namespace('Admin')->prefix('student')->name('student.')->group(function () {
+//});
 
 
 Route::namespace('Teachers')->prefix('teacher')->group(function () {
@@ -36,7 +36,15 @@ Route::namespace('Teachers')->prefix('teacher')->group(function () {
     });
 });
 
-Route::namespace('Students')->group(function () {
+Route::namespace('Student')->group(function () {
+    Route::group(['middleware'=>'auth' , 'prefix' => 'student'], function () {
+        Route::get('dashboard', 'DashboardController@index')->name('student.dashboard');
+        Route::resource('studentClass' , 'ClassController');
+        Route::get('studentClass/join/{studentClass}' , 'ClassController@join')->name('studentClass.join');
+        Route::get('exam/show/{exam}/{room}' , 'ExamController@show')->name('student.exam.show');
+        Route::post('exam/result/{exam}' , 'ExamController@execute')->name('student.exam.execute');
 
+    });
 });
+
 Auth::routes();

@@ -47,7 +47,7 @@
 
                                     <div class="form-group">
                                         <label>توضیحات آزمون</label>
-                                        <textarea rows="5" cols="5" name="description" class="form-control" placeholder="توضیحات خود را اینجا وارد کنید ..."></textarea>
+                                        <textarea rows="5" cols="5" name="contents" class="form-control" placeholder="توضیحات خود را اینجا وارد کنید ..."></textarea>
                                     </div>
                                 </div>
                             </fieldset>
@@ -117,6 +117,15 @@
 
                                         </div>
                                         <span class="help-block">توجه شود زمان شروع و پایان یکسان نباشند.</span>
+
+                                        <div class="form-group">
+                                            <label class="display-block">تعداد سوال انتخاب شده به صورت رندوم:</label>
+                                            <input type="text" class="form-control" style="width: 60%" name="number" placeholder="5" >
+                                            <span class="help-block">مثال از 20 سوال انتخابی شما 5 سوال به صورت رندوم انتخاب شود.</span>
+                                            <label class="display-block">تعداد سوال انتخاب شده:</label>
+                                            <input id="selected" readonly value="0" class="form-control">
+                                        </div>
+
 
                                         <div class="form-group">
                                             <table id="example" class="table" style="width:100%">
@@ -190,6 +199,7 @@
         'default': 'now'
     });
     var q = [];
+    var selected_qu = 0;
     function f(a) {
         let flag = 0;
         for (let i = 0; i < q.length; i++) {
@@ -204,6 +214,7 @@
         id= id.concat(a);
         $( id).html("اتخاب شد");
         $("#qu").val(q);
+        $('#selected').val(++selected_qu);
     }
 
     function r(item) {
@@ -213,6 +224,8 @@
         id= id.concat(item);
         $( id).html(" ");
         $("#qu").val(q);
+        $('#selected').val(--selected_qu);
+
     }
 
     </script>

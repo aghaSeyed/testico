@@ -67,7 +67,6 @@
                                     </div>
 
                                     <div class="panel-body">
-                                        class folan
                                     </div>
 
                                     <div class="table-responsive">
@@ -77,7 +76,7 @@
                                                 <th>#</th>
                                                 <th>First Name</th>
                                                 <th>Last Name</th>
-                                                <th>Username</th>
+                                                <th>Avg</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -85,25 +84,25 @@
                                                 <td>1</td>
                                                 <td>Eugene</td>
                                                 <td>Kopyov</td>
-                                                <td>@Kopyov</td>
+                                                <td>98</td>
                                             </tr>
                                             <tr>
                                                 <td>2</td>
                                                 <td>Victoria</td>
                                                 <td>Baker</td>
-                                                <td>@Vicky</td>
+                                                <td>93</td>
                                             </tr>
                                             <tr>
                                                 <td>3</td>
                                                 <td>James</td>
                                                 <td>Alexander</td>
-                                                <td>@Alex</td>
+                                                <td>60</td>
                                             </tr>
                                             <tr>
                                                 <td>4</td>
                                                 <td>Franklin</td>
                                                 <td>Morrison</td>
-                                                <td>@Frank</td>
+                                                <td>55</td>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -143,13 +142,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-4">
-                                    <div class="content-group">
-                                        <h5 class="text-semibold no-margin"><i
-                                                class="icon-calendar5 position-left text-slate"></i> $23,464</h5>
-                                        <span class="text-muted text-size-small">average revenue</span>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
 

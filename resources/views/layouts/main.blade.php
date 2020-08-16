@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Limitless - Responsive Web Application Kit by Eugene Kopyov</title>
+    <title>Testico</title>
 
     <!-- Global stylesheets -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet"
@@ -14,6 +14,7 @@
     <link href="/admin/css/core.css" rel="stylesheet" type="text/css">
     <link href="/admin/css/components.css" rel="stylesheet" type="text/css">
     <link href="/admin/css/colors.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{url('css/fontFa.css')}}">
     <!-- /global stylesheets -->
 
     <!-- Core JS files -->
@@ -43,7 +44,11 @@
 <body>
 
 <!-- Main navbar -->
-<x-main-header :name="$name"/>
+@if(\Illuminate\Support\Facades\Auth::guard('Teacher')->check())
+    <x-main-header :name="$name"/>
+@elseif(\Illuminate\Support\Facades\Auth::guard()->check())
+    <x-student-header :name="$name"/>
+@endif
 <!-- /main navbar -->
 
 

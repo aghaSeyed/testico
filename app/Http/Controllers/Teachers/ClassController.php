@@ -73,8 +73,9 @@ class ClassController extends Controller
         $teacher =auth('Teacher')->user();
         $room = Room::all()->find($id);
         $students = $room->students()->get();
-        $requests = \App\Models\Request::with('student')->where('status' , 0)->get();
-        return view('teacher.class.index', ['name' => $teacher->id , 'students' => $students , 'requests' => $requests ,'class' => $room->id]);
+//        $requests = \App\Models\Request::with('student')->where('status' , 0)->get();
+        $requests = \App\Models\Request::where('room_id' , $id)->where('status' , 0)->get();
+        return view('teacher.class.index', ['name' => $teacher->fName , 'students' => $students , 'requests' => $requests ,'class' => $room->id]);
     }
 
     /**
@@ -132,7 +133,7 @@ class ClassController extends Controller
         $request->status = 1;
         $request->save();
         $student = Student::all()->find($std_id);
-        $student->rooms()->sync($room_id);
+        $student->rooms()->attach($room_id);
         $teacher =auth('Teacher')->user();
         $room = Room::all()->find($room_id);
         $students = $room->students()->get();
@@ -159,19 +160,5 @@ class ClassController extends Controller
         return redirect()->route('class.show',['name' => $teacher->id , 'students' => $students , 'requests' => $requests ,'class' => $room->id]);
 
     }
-    public function test()
-    {
-        $exam = Exam::all()->find(2);
-//       $v = Verta::parse($exam->start);
-//       $v2 = Verta::parse($exam->end);
-//       $v1 = Verta::now();
-//       dd($v1->diffMinutes($v) , $v1->diffMinutes($v2));
-       $q = \GuzzleHttp\json_decode($exam->questions);
-        $arr =[];
-       foreach ($q as $qq){
-        array_push($arr , $qq);
-       }
-        $questions = Question::findMany($arr)->random(1)->toArray();
-       dd($questions);
-    }
+
 }

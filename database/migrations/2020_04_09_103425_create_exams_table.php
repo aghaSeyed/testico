@@ -21,6 +21,7 @@ class CreateExamsTable extends Migration
             $table->string('time');
             $table->string('start');
             $table->string('end');
+            $table->integer('number');
             $table->longText('questions');
             $table->integer('teacher_id')->unsigned()->index();
             $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('cascade');;

@@ -74,6 +74,7 @@ class ExamController extends Controller
         $exam->room_id = $request->class;
         $exam->teacher_id = $teacher->id;
         $exam->time = $request->time;
+        $exam->description = $request->contents;
         $exam->type = $request->type;
         $questions =explode(',' , $request->questions);
         $exam->questions = json_encode($questions);

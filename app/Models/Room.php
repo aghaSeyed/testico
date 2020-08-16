@@ -37,7 +37,8 @@ class Room extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function exams(){
+    public function exams()
+    {
         return $this->hasMany(Exam::class);
     }
 

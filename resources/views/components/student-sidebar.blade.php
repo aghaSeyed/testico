@@ -10,7 +10,7 @@
                     <div class="media-body">
                         <span class="media-heading text-semibold">Student</span>
                         <div class="text-size-mini text-muted">
-                            <i class="icon-pin text-size-small"></i> &nbsp;Santa Ana, CA
+                            <i class="icon-pin text-size-small"></i> &nbsp;IRAN / Isfahan
                         </div>
                     </div>
 
@@ -35,21 +35,11 @@
                     <!-- Main -->
                     <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i>
                     </li>
-                    <li class="active"><a href="index.html"><i class="icon-home4"></i>
+                    <li class="active"><a href="{{route('student.dashboard')}}"><i class="icon-home4"></i>
                             <span>Dashboard</span></a></li>
                     <li>
-                        <a href="#"><i class="icon-stack"></i> <span>کلاس های من</span></a>
+                        <a href="{{route('studentClass.index')}}"><i class="icon-stack"></i> <span>کلاس های من</span></a>
 
-                    </li>
-                    <li>
-                        <a href="#"><i class="icon-pencil3"></i> <span>مدیریت آزمون ها</span></a>
-                        <ul>
-                            <li><a href="" id="layout3">تاریخچه آزمون ها</a></li>
-                            <li><a href="" id="layout1">ایجادآزمون</a></li>
-                            <li><a href="" id="layout2">ویرایش آزمون</a></li>
-                            <li><a href="" id="layout3">ایجاد سوال</a></li>
-                            <li><a href="" id="layout3">ویرایش سوال</a></li>
-                        </ul>
                     </li>
                     <li>
                         <a href="#"><i class="icon-people"></i> <span>پیام ها</span></a>
@@ -58,10 +48,6 @@
                             <li><a href="">صندوق ورودی</a></li>
 
                         </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="icon-upload"></i> <span>اطلاعیه</span></a>
-
                     </li>
 
                     <!-- /main -->

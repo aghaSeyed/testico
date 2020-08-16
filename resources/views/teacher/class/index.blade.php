@@ -101,6 +101,12 @@
 
 
                 </div>
+        <form action="{{route('class.index')}}" method="get">
+            @csrf
+            <div class="'text-left">
+                <button type="submit" class="btn btn-info">back<i class="icon-arrow-right14 position-left"></i></button>
+            </div>
+        </form>
             </div>
 
         </div>

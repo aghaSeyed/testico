@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\Model;
 class Exam extends Model
 {
     protected $fillable = [
-        'room_id' ,'teacher_id' ,'name', 'description','questions' , 'type', ' start' , 'end' , 'time'
+        'room_id' ,'teacher_id' ,'name', 'description','questions' , 'type', ' start' , 'end' , 'time' , 'number'
     ];
 
     /**
